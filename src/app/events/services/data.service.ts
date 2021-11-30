@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Event } from '../interfaces/interfaces';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

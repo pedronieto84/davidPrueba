@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 import { Event } from '../../interfaces/interfaces';
 import { DataService } from '../../services/data.service';
@@ -24,11 +25,12 @@ export class BillboardComponent implements OnInit {
   /* MÉTODOS */
   //Llama a getEvents de dataService y obtiene array de objetos Event
   getEvents() {
-    this.dataService.getEvents()
+    this.dataService.getEvents().pipe(
+        map( (events => events.sort((a, b) => parseInt(a.endDate) - parseInt(b.endDate))))
+      ) 
       .subscribe( events => {
         this.events = events
         console.log(this.events)
       } );
   }
-
 }
