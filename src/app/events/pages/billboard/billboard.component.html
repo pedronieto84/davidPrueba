@@ -6,10 +6,13 @@
 
     <!-- Event cards -->
     <div class="row justify-content-center">
+        <app-event-card class="col-md-5"
+            *ngFor="let event of events"
+            [eventToShow]="event"
+        ></app-event-card>
+        <!-- <app-event-card class="col-md-5"></app-event-card>
         <app-event-card class="col-md-5"></app-event-card>
-        <app-event-card class="col-md-5"></app-event-card>
-        <app-event-card class="col-md-5"></app-event-card>
-        <app-event-card class="col-md-5"></app-event-card>
+        <app-event-card class="col-md-5"></app-event-card> -->
     </div>
 
 </div>

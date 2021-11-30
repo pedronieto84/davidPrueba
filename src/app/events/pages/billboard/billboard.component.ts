@@ -22,6 +22,7 @@ export class BillboardComponent implements OnInit {
   }
 
   /* MÉTODOS */
+  //Llama a getEvents de dataService y obtiene array de objetos Event
   getEvents() {
     this.dataService.getEvents()
       .subscribe( events => {

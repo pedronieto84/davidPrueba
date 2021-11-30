@@ -1,23 +1,23 @@
 <div class="card mb-4">
     <!-- Título y subtítulo -->
     <div class="card-header">
-        <h5 class="card-title" routerLink="/events/detail/5">JOAN MANUEL SERRAT</h5>
-        <h6 class="card-text" routerLink="/events/detail/5">Antología desordenada</h6>
+        <h5 class="card-title" routerLink="/events/detail/{{ eventToShow.id }}">{{ eventToShow.title }}</h5>
+        <h6 class="card-text" routerLink="/events/detail/{{ eventToShow.id }}">{{ eventToShow.subtitle }}</h6>
     </div>
 
     <!-- Imagen -->       
-    <img src="/assets/img/sample-image.jpg" routerLink="/events/detail/5" class="card-img-top" alt="Imagen evento">
+    <img src="{{ eventToShow.image }}" routerLink="/events/detail/{{ eventToShow.id }}" class="card-img-top" alt="Imagen evento">
 
     <!-- Body -->
     <div class="card-body">
-        <p class="card-text">01/10/2015 - 30/10/2015</p>
-        <p class="card-text">Camp de Mart, Tarragona</p>
+        <p class="card-text">{{ eventToShow.startDate }} - {{ eventToShow.endDate }}</p>
+        <p class="card-text">{{ eventToShow.place }}</p>
         <hr class="d-none d-md-block">
-        <p class="card-text d-none d-md-block">Cinquanta cançons en un disc quàdruple, un llibre amb textos personals i un centenar de fotografies per commemorar mig segle als escenaris.</p>
+        <p class="card-text d-none d-md-block" innerHTML="{{ eventToShow.description }}"></p>
     </div>
 
     <!-- Button -->
     <div class="d-flex">
-        <button class="btn btn-primary flex-grow-1" routerLink="/events/detail/5" type="button">Comprar</button>
+        <button class="btn btn-primary flex-grow-1" routerLink="/events/detail/{{ eventToShow.id }}" type="button">Comprar</button>
     </div>   
 </div>
