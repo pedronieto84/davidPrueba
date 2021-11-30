@@ -10,7 +10,7 @@
 
     <!-- Body -->
     <div class="card-body">
-        <p class="card-text">{{ eventToShow.startDate }} - {{ eventToShow.endDate }}</p>
+        <p class="card-text">{{ eventToShow.startDate | date: 'dd/MM/yyyy' }} - {{ eventToShow.endDate | date: 'dd/MM/yyyy' }}</p>
         <p class="card-text">{{ eventToShow.place }}</p>
         <hr class="d-none d-md-block">
         <p class="card-text d-none d-md-block" innerHTML="{{ eventToShow.description }}"></p>

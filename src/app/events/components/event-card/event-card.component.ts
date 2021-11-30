@@ -15,7 +15,7 @@ export class EventCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.eventToShow);
+    
   }
 
 }
