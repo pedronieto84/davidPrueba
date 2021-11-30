@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { BillboardComponent } from './pages/billboard/billboard.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,7 +23,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
     CommonModule,
     EventsRoutingModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ]
 })
 export class EventsModule { }
