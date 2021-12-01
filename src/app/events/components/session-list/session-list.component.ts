@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import { EventDetail, Session } from '../../interfaces/interfaces';
+import { Session } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-session-list',
@@ -16,7 +16,7 @@ export class SessionListComponent implements OnInit {
   faMinus = faMinus;
 
   /* Properties */
-  @Input() eventToShow!: EventDetail;
+  @Input() sessionsToShow!: Session[];
 
   constructor() { }
 

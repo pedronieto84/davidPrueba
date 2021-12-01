@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+
+import { map } from 'rxjs/operators';
 
 import { DataService } from '../../services/data.service';
-import { EventDetail } from '../../interfaces/interfaces';
-;
+import { EventDetail, Session } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-event-detail',
@@ -14,6 +15,7 @@ export class EventDetailComponent implements OnInit {
 
   /* PROPERTIES */
   eventToShow!: EventDetail;
+  sessionsToShow!: Session[];
   id!: string;
 
 
@@ -25,8 +27,8 @@ export class EventDetailComponent implements OnInit {
   ngOnInit(): void {
     //Obtenemos el id
     this.getId();
-    //Obtenemos el evento correspondiente
-    this.getEventInfo(this.id);
+    //Obtenemos el array de sesiones correspondiente
+    this.getSessions(this.id);
   }
 
   /* Methods */
@@ -36,10 +38,18 @@ export class EventDetailComponent implements OnInit {
       .subscribe( params => this.id = params['id'] )
   }
 
-  //Obtiene el evento desde el servicio
-  getEventInfo(id: string) {
-    this.dataService.getEventInfo(id)
-      .subscribe( event => this.eventToShow = event);
+  //Obtiene el array de sesiones desde el servicio
+  getSessions(id: string) {
+    this.dataService.getEventInfo(id).pipe(
+      //Order by end date, ASC
+        map( (event => {
+          //Asigno el evento que me devuelve
+          this.eventToShow = event;
+          //Devuelvo las sesiones
+          return event.sessions.sort( (a, b) => parseInt(a.date) - parseInt(b.date) )
+        } ) )
+      )
+      .subscribe( sessions => this.sessionsToShow = sessions);
   }
 
 }
