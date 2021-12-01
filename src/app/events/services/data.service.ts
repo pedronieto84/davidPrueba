@@ -52,6 +52,9 @@ export class DataService {
           this.arrayCart[index].totalAmount +=1
         }else{
           this.arrayCart[index].totalAmount -= 1
+          if(this.arrayCart[index].totalAmount === 0){
+            this.arrayCart.splice(index, 1)
+          }
         }
          this.cart.next(this.arrayCart)
     }else{
