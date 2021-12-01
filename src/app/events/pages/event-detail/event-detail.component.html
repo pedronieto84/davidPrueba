@@ -13,7 +13,10 @@
     <div class="row justify-content-between">
 
         <!-- Session List -->
-        <app-session-list class="col-md-6 mb-4 mb-md-0"></app-session-list>
+        <app-session-list 
+            class="col-md-6 mb-4 mb-md-0"
+            [eventToShow]="eventToShow"
+            *ngIf="eventToShow"></app-session-list>
 
         <!-- Shopping Cart -->
         <app-shopping-cart class="col-md-6"></app-shopping-cart>

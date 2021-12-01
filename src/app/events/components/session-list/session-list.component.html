@@ -5,7 +5,8 @@
 
     <!-- Lista -->
     <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between">
+        <li class="list-group-item d-flex justify-content-between"
+            *ngFor="let session of eventToShow.sessions">
             <!-- Texto -->
             <div>
                 <!-- Fecha -->
@@ -26,43 +27,6 @@
                 </span>
                 
             </div>
-        </li>
-
-        <li class="list-group-item d-flex justify-content-between">
-            <!-- Texto -->
-            <div>
-                <!-- Fecha -->
-                <p>Fecha: 23/09/2015, Disponibilidad: 3 </p>                
-            </div>
-
-            <!-- Controles -->
-            <div>
-                <!-- Botón menos -->
-                <span>-</span>
-                <!-- Número -->
-                <span>0</span>
-                <!-- Botón más -->
-                <span>+</span>
-            </div>
-        </li>
-
-        <li class="list-group-item d-flex justify-content-between">
-            <!-- Texto -->
-            <div>
-                <!-- Fecha -->
-                <p>Fecha: 23/09/2015, Disponibilidad: 3 </p>                
-            </div>
-
-            <!-- Controles -->
-            <div>
-                <!-- Botón menos -->
-                <span>-</span>
-                <!-- Número -->
-                <span>0</span>
-                <!-- Botón más -->
-                <span></span>
-            </div>
-        </li>
-        
+        </li>        
     </ul>
 </div>
