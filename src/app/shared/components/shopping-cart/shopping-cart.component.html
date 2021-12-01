@@ -4,8 +4,8 @@
 <li *ngFor="let cart of cartArray">
   <ul>
     <!-- ponerle el nombre dle concierto-->
-    <p>{{ cart[0].eventId }}</p>
-    <li *ngFor="let cartItem of cart">
+    <p>{{ cart.title }}</p>
+    <li *ngFor="let cartItem of cart.elements">
       {{ cartItem | json }}
       <button (click)="deleteItem(cartItem)">Eliminar Item</button>
     </li>

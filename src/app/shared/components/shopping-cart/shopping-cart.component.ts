@@ -30,7 +30,15 @@ export class ShoppingCartComponent implements OnInit {
                    const elementsOfThisEvent = cartUpdate.filter((item:Session)=>{
                  return item.eventId === eventId
            })
-           this.cartArray[index] = elementsOfThisEvent
+
+           // 
+           const title = 'hola';
+
+           
+          
+
+           ///
+           this.cartArray[index] = {  title, elements: elementsOfThisEvent }    
         })
 
         console.log('FINAL DATA', this.cartArray);
