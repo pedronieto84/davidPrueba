@@ -15,7 +15,6 @@ export class SessionListComponent implements OnInit {
   /* Icons */
   faPlus = faPlus;
   faMinus = faMinus;
-  total:number = 0
 
   /* Properties */
   @Input() sessionsToShow!: Session[];
@@ -30,15 +29,25 @@ export class SessionListComponent implements OnInit {
     console.log(session, this.eventId);
     
     session.eventId = this.eventId;
-    this.total += 1;
-    this.data.updateCart(session)
+    if(session.totalAmount >= parseInt(session.availability)){
+        console.log('NO HAY TANTAS ENTRADAS DISPONIBLES')
+    }else{  
+        session.totalAmount += 1;
+        this.data.updateCart(session)
+    }
+    
   }
 
    decrement(session: Session) {
     console.log(session, this.eventId);
     session.eventId = this.eventId;
+       if(session.totalAmount <=  0){
+        console.log('NO TIENE SENTIDO METER NEGATIVOS')
+    }else{  
+        session.totalAmount -= 1;
+        this.data.updateCart(session)
+    }
     
-    this.total -=1;
     this.data.updateCart(session)
   }
 
