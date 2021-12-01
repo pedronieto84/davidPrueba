@@ -5,6 +5,7 @@ import { EventsRoutingModule } from './events-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { BillboardComponent } from './pages/billboard/billboard.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
@@ -29,7 +30,8 @@ import { SessionListComponent } from './components/session-list/session-list.com
     NgbModule,
     RouterModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    FontAwesomeModule
   ]
 })
 export class EventsModule { }
