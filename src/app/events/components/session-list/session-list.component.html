@@ -1,33 +1,35 @@
 <div class="border border-2 rounded p-3">
+  <!-- Título -->
+  <h4 class="mb-2">Sesiones</h4>
 
-    <!-- Título -->
-    <h4 class="mb-2">Sesiones</h4>
+  <!-- Lista -->
+  <ul class="list-group list-group-flush">
+    <li
+      class="list-group-item d-flex justify-content-between"
+      *ngFor="let session of sessionsToShow"
+    >
+      <!-- Texto -->
+      <div>
+        <!-- Fecha -->
+        <p>
+          Fecha: {{ session.date | date: "dd/MM/yyyy" }}, Disponibilidad:
+          {{ session.availability }}
+        </p>
+      </div>
 
-    <!-- Lista -->
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between"
-            *ngFor="let session of sessionsToShow">
-            <!-- Texto -->
-            <div>
-                <!-- Fecha -->
-                <p>Fecha: {{ session.date | date: 'dd/MM/yyyy' }}, Disponibilidad: {{ session.availability }} </p>                
-            </div>
-
-            <!-- Controles -->
-            <div>
-                <!-- Botón menos -->
-                <span class="mr-2">
-                    <fa-icon [icon]="faMinus"></fa-icon>
-                </span>                
-                <!-- Número -->
-                <span>0</span>
-                <!-- Botón más -->
-                <span class="ml-2">
-                    <fa-icon [icon]="faPlus"
-                        (click)='increment(session)'></fa-icon>
-                </span>
-                
-            </div>
-        </li>        
-    </ul>
+      <!-- Controles -->
+      <div>
+        <!-- Botón menos -->
+        <span class="mr-2">
+          <fa-icon [icon]="faMinus" (click)="decrement(session)"></fa-icon>
+        </span>
+        <!-- Número -->
+        <span>{{ total }}</span>
+        <!-- Botón más -->
+        <span class="ml-2">
+          <fa-icon [icon]="faPlus" (click)="increment(session)"></fa-icon>
+        </span>
+      </div>
+    </li>
+  </ul>
 </div>

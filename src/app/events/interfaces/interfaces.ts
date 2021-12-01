@@ -26,6 +26,7 @@ export interface EventInfo {
 export interface Session {
     date:         string;
     availability: string;
+    eventId?:string;
 }
 
 //Interfaz para el carrito

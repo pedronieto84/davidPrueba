@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/events/services/data.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  cartArray:any[] = [];
+
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
+
+      this.data.cart$.subscribe((cartUPdate)=>{
+        console.log('cartUpdate', cartUPdate)
+        this.cartArray = cartUPdate
+      })
+
   }
 
 }
