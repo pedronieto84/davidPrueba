@@ -9,6 +9,7 @@ import { BillboardComponent } from './pages/billboard/billboard.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SessionListComponent } from './components/session-list/session-list.component';
 
 
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     BillboardComponent,
     EventDetailComponent,
-    EventCardComponent
+    EventCardComponent,
+    SessionListComponent
   ],
   imports: [
     CommonModule,

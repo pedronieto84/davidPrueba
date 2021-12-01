@@ -26,11 +26,12 @@ export class BillboardComponent implements OnInit {
   //Llama a getEvents de dataService y obtiene array de objetos Event
   getEvents() {
     this.dataService.getEvents().pipe(
-        map( (events => events.sort((a, b) => parseInt(a.endDate) - parseInt(b.endDate))))
+      //Order by end date, ASC
+        map( (events => events.sort( (a, b) => parseInt(a.endDate) - parseInt(b.endDate) )) )
       ) 
       .subscribe( events => {
         this.events = events
-        console.log(this.events)
+        // console.log(this.events)
       } );
   }
 }
