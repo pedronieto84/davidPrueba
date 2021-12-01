@@ -11,16 +11,83 @@ export class ShoppingCartComponent implements OnInit {
 
   cartArray:any[] = [];
 
+
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
+    this.data.cart$.subscribe( async  (cartUpdate)=>{
+         const eventidsArray = await cartUpdate.map((item: Session)=>{
+            return item.eventId
+        });
+        console.log('event is', eventidsArray);
+       
+       console.log('i', this.cartArray);
+       const setOfEvents =  [...new Set(eventidsArray)];
 
-      this.data.cart$.subscribe((cartUPdate)=>{
-        console.log('cartUpdate', cartUPdate)
-        this.cartArray = cartUPdate
-      })
+        console.log('set of events', setOfEvents);
 
-  }
+        setOfEvents.forEach((eventId: any, index)=>{
+                   const elementsOfThisEvent = cartUpdate.filter((item:Session)=>{
+                 return item.eventId === eventId
+           })
+           this.cartArray[index] = elementsOfThisEvent
+        })
+
+        console.log('FINAL DATA', this.cartArray);
+        
+       
+       
+         //       setOfEvents.forEach((eventId:any)=>{
+
+  //         const elementsOfThisEvent = cartUpdate.filter((item:Session)=>{
+  //               return item.eventId === eventId
+  //         })
+
+
+      
+  //       this.cartArray[eventId] = elementsOfThisEvent
+      
+    })
+  //     console.log('on init de shoping cart comp')
+  //     this.data.cart$.subscribe((cartUpdate: Session[]): void=>{
+  //        console.log('subscribe de data cart')
+  //       console.log('cartUpdate', cartUpdate)
+  //      // this.cartArray = cartUPdate;
+
+
+  //       // necesito saber cuantos evnet ids tengo;
+
+  //       const eventidsArray = cartUpdate.map((item: Session)=>{
+  //           return item.eventId
+  //       });
+
+  //       const setOfEvents =  [...new Set(eventidsArray)];
+
+  //       console.log('set of events', setOfEvents);
+
+
+  //       // necesito crear un array con el indice de ese id 
+  //       setOfEvents.forEach((eventId:any)=>{
+
+  //         const elementsOfThisEvent = cartUpdate.filter((item:Session)=>{
+  //               return item.eventId === eventId
+  //         })
+
+
+      
+  //       this.cartArray[eventId] = elementsOfThisEvent
+  //         console.log('this.cartarray', this.cartArray)
+  //       // dentro de cada array introducir el subarray
+
+
+  //     })
+
+  // })
+
+
+
+
+}
 
   deleteItem(item:Session){
     this.data.updateCart(item, 'decrement')

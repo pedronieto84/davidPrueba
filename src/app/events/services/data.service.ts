@@ -34,13 +34,15 @@ export class DataService {
 
   updateCart(cartUpdate:any, action: string){
     
-
+    console.log('updatecart', cartUpdate, action);
+    
     // miramos si el elemento ya esta dentro del array o no
 
     const isInsideArray = this.arrayCart.some((item:Session)=>{
       return this.checkIf2SessionsAreEqual(cartUpdate, item)
     })
-
+    console.log(isInsideArray);
+    
 
     // si ya existe el elemento, cojo el total amount y le sumo 1
     if(isInsideArray){
@@ -59,10 +61,15 @@ export class DataService {
           
           
         }
-         this.cart.next(this.arrayCart)
+         
+       
+        this.cart.next(this.arrayCart)
+         console.log('final Update', this.arrayCart)
+        
     }else{
     this.arrayCart.push(cartUpdate)
     this.cart.next(this.arrayCart);
+    
     
     }
 

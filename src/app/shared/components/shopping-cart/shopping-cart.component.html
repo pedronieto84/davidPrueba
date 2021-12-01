@@ -1,7 +1,13 @@
 <p>shopping-cart works!</p>
 
-<pre>{{ cartArray | json }}</pre>
+<ul></ul>
 <li *ngFor="let cart of cartArray">
-
-    <button (click)="deleteItem(cart)">Eliminar Item</button>
+  <ul>
+    <!-- ponerle el nombre dle concierto-->
+    <p>{{ cart[0].eventId }}</p>
+    <li *ngFor="let cartItem of cart">
+      {{ cartItem | json }}
+      <button (click)="deleteItem(cartItem)">Eliminar Item</button>
+    </li>
+  </ul>
 </li>
