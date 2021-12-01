@@ -23,7 +23,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   deleteItem(item:Session){
-    this.data.deleteItemFromCart(item)
+    this.data.updateCart(item, 'decrement')
   }
 
 }
