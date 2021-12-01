@@ -26,17 +26,16 @@ export class ShoppingCartComponent implements OnInit {
 
         console.log('set of events', setOfEvents);
 
-        setOfEvents.forEach((eventId: any, index)=>{
+        setOfEvents.forEach(async (eventId: any, index)=>{
                    const elementsOfThisEvent = cartUpdate.filter((item:Session)=>{
                  return item.eventId === eventId
            })
 
            // 
-           const title = 'hola';
 
-           
-          
 
+          const title = await this.data.getTitleFromid(eventId)
+           console.log('titles', title)
            ///
            this.cartArray[index] = {  title, elements: elementsOfThisEvent }    
         })

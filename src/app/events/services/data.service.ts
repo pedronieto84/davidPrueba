@@ -102,4 +102,14 @@ export class DataService {
     return this.http.get<EventDetail>(`../../../assets/data/event-info-${id}.json`);
   }
 
+ async getTitleFromid(id: string) {
+    const allData = await this.http.get<Event[]>(`../../../assets/data/events.json`).toPromise()
+    console.log('all data', allData);
+    const getMyItem = allData.find((event)=>{
+          return event.id === id
+    }) as Event
+    
+    return getMyItem.title
+  }
+
 }
