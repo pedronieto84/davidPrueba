@@ -32,8 +32,8 @@ export class SessionListComponent implements OnInit {
     if(session.totalAmount >= parseInt(session.availability)){
         console.log('NO HAY TANTAS ENTRADAS DISPONIBLES')
     }else{  
-        session.totalAmount += 1;
-        this.data.updateCart(session)
+        
+        this.data.updateCart(session, 'increase')
     }
     
   }
@@ -44,11 +44,9 @@ export class SessionListComponent implements OnInit {
        if(session.totalAmount <=  0){
         console.log('NO TIENE SENTIDO METER NEGATIVOS')
     }else{  
-        session.totalAmount -= 1;
-        this.data.updateCart(session)
+        this.data.updateCart(session, 'decrease')
     }
     
-    this.data.updateCart(session)
   }
 
 }

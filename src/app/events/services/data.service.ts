@@ -24,10 +24,45 @@ export class DataService {
     private http: HttpClient 
   ) { }
 
-  updateCart(cartUpdate:any){
+  checkIf2SessionsAreEqual(sessionA:Session, sessionB:Session){
+     if( (sessionA.eventId === sessionB.eventId ) && (sessionA.date === sessionB.date ) ){
+              return true
+            }else {
+              return false
+            }
+  }
+
+  updateCart(cartUpdate:any, action: string){
+    
+
+    // miramos si el elemento ya esta dentro del array o no
+
+    const isInsideArray = this.arrayCart.some((item:Session)=>{
+      return this.checkIf2SessionsAreEqual(cartUpdate, item)
+    })
+
+
+    // si ya existe el elemento, cojo el total amount y le sumo 1
+    if(isInsideArray){
+        // tenemos que encontrar la posicion de ese elemento en el cart Array;
+        const index = this.arrayCart.findIndex((item:Session)=>{
+             return this.checkIf2SessionsAreEqual(cartUpdate, item)
+        })
+        if(action === 'increase'){
+          this.arrayCart[index].totalAmount +=1
+        }else{
+          this.arrayCart[index].totalAmount -= 1
+        }
+         this.cart.next(this.arrayCart)
+    }else{
     this.arrayCart.push(cartUpdate)
-    // 
-    this.cart.next(this.arrayCart)
+    this.cart.next(this.arrayCart);
+    
+    }
+
+    // si el elemento no existe, lo añado al array
+
+  
   }
 
   deleteItemFromCart(item:Session){
@@ -36,11 +71,7 @@ export class DataService {
 
     // encontrar el indice del elemento que tengo que eliminar
     const indexOfItemToDelete = this.arrayCart.findIndex((itemOfArray: Session)=>{
-            if( (itemOfArray.eventId === item.eventId ) && (itemOfArray.date === item.date ) ){
-              return true
-            }else {
-              return false
-            }
+            return this.checkIf2SessionsAreEqual(itemOfArray, item)
     })
 
     this.arrayCart.splice(indexOfItemToDelete, 1);
