@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Session } from 'src/app/events/interfaces/interfaces';
 import { DataService } from 'src/app/events/services/data.service';
 
 @Component({
@@ -19,6 +20,10 @@ export class ShoppingCartComponent implements OnInit {
         this.cartArray = cartUPdate
       })
 
+  }
+
+  deleteItem(item:Session){
+    this.data.deleteItemFromCart(item)
   }
 
 }

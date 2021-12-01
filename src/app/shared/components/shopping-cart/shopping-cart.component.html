@@ -1,4 +1,7 @@
 <p>shopping-cart works!</p>
 
 <pre>{{ cartArray | json }}</pre>
-<li *ngFor="let cart of cartArray"></li>
+<li *ngFor="let cart of cartArray">
+
+    <button (click)="deleteItem(cart)">Eliminar Item</button>
+</li>

@@ -27,6 +27,7 @@ export interface Session {
     date:         string;
     availability: string;
     eventId?:string;
+    totalAmount?: number;
 }
 
 //Interfaz para el carrito
