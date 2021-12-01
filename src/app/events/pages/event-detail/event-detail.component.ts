@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 import { DataService } from '../../services/data.service';
 import { EventDetail, Session } from '../../interfaces/interfaces';
@@ -17,6 +18,7 @@ export class EventDetailComponent implements OnInit {
   eventToShow!: EventDetail;
   sessionsToShow!: Session[];
   id!: string;
+  displayError: boolean = false; //Controlo si aparece el error block
 
 
   constructor(
@@ -25,9 +27,11 @@ export class EventDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //Obtenemos el id
+    //Reinicio propiedad displayError
+    this.displayError = false;
+    //Obtengo el id
     this.getId();
-    //Obtenemos el array de sesiones correspondiente
+    //Obtengo el array de sesiones correspondiente
     this.getSessions(this.id);
   }
 
@@ -41,7 +45,12 @@ export class EventDetailComponent implements OnInit {
   //Obtiene el array de sesiones desde el servicio
   getSessions(id: string) {
     this.dataService.getEventInfo(id).pipe(
-      //Order by end date, ASC
+        //Compruebo si hay error
+        catchError(err => {
+          this.displayError = true; //Cambio propiedad a true para hacer el display del error block
+          return of() as Observable<EventDetail>
+        }),
+        //Order by end date, ASC
         map( (event => {
           //Asigno el evento que me devuelve
           this.eventToShow = event;

@@ -18,6 +18,14 @@
             [sessionsToShow]="sessionsToShow"
             *ngIf="eventToShow"></app-session-list>
 
+        <!-- Error block -->
+        <div class="col-md-6 mb-4 mb-md-0"
+            *ngIf="displayError">
+            <div class="border border-2 rounded p-3 d-flex">
+                <p>EVENT INFO NOT FOUND</p>
+            </div>
+        </div>
+        
         <!-- Shopping Cart -->
         <app-shopping-cart class="col-md-6"></app-shopping-cart>
 
