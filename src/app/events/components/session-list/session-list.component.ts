@@ -24,4 +24,8 @@ export class SessionListComponent implements OnInit {
     
   }
 
+  increment(session: Session) {
+    console.log(session);
+  }
+
 }

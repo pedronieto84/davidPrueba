@@ -1,0 +1,7 @@
+/* Imports */
+@import "../../scss-components/color";
+
+nav {
+    background-color: $primary;
+    box-shadow: 0 8px 8px -4px rgb(40, 41, 41);
+}

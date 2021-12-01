@@ -1,0 +1,19 @@
+/* Imports */
+@import "../scss-components/color";
+
+
+/* Mixin para hover en títulos */
+@mixin title-hover {
+  color: $textHover;
+  cursor: pointer;
+}
+
+/* Mixin para hover en fotografía */
+@mixin image-pre-hover {
+  opacity: 1;
+  transition: .3s ease-in-out;
+}
+@mixin image-hover {
+  opacity: .5;
+  cursor: pointer;
+}

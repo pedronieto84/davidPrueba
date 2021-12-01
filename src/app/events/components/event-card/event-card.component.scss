@@ -1,0 +1,17 @@
+@import "../../../shared/scss-components/mixins";
+
+.card {
+    height: 100%;
+}
+
+.title-hover:hover {
+    @include title-hover;
+}
+
+img {
+    @include image-pre-hover;
+}
+
+img:hover {
+    @include image-hover;
+}

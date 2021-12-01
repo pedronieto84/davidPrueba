@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import { DataService } from '../../services/data.service';
-import { EventDetail, Session } from '../../interfaces/interfaces';
+import { Cart, EventDetail, Session } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-event-detail',
@@ -20,6 +20,11 @@ export class EventDetailComponent implements OnInit {
   id!: string;
   displayError: boolean = false; //Controlo si aparece el error block
 
+  /* Cart */
+  //Guardo los datos del cart
+  currentCart: Cart = {
+    cartItems: []
+  }
 
   constructor(
     private dataService: DataService,
