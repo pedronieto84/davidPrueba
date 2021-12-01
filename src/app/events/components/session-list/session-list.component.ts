@@ -17,7 +17,7 @@ export class SessionListComponent implements OnInit {
 
   /* Properties */
   @Input() sessionsToShow!: Session[];
-
+  @Input() eventId!: string;
   constructor() { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class SessionListComponent implements OnInit {
   }
 
   increment(session: Session) {
-    console.log(session);
+    console.log(session, this.eventId);
   }
 
 }

@@ -19,6 +19,7 @@ export class EventDetailComponent implements OnInit {
   sessionsToShow!: Session[];
   id!: string;
   displayError: boolean = false; //Controlo si aparece el error block
+  
 
   /* Cart */
   //Guardo los datos del cart
