@@ -67,6 +67,7 @@ export class DataService {
          console.log('final Update', this.arrayCart)
         
     }else{
+    cartUpdate.totalAmount = 1
     this.arrayCart.push(cartUpdate)
     this.cart.next(this.arrayCart);
     
